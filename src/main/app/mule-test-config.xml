@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:mule-xml="http://www.mulesoft.org/schema/mule/xml" 
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+        http://www.mulesoft.org/schema/mule/jdbc http://www.mulesoft.org/schema/mule/jdbc/current/mule-jdbc.xsd
+        http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+        http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+        http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+        http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/4.0/mule-sfdc.xsd">
+
+	<description>
+		TEST configuration
+	</description>
+
+
+    <flow name="topicAllAccountsFlow1">
+        <vm:inbound-endpoint path="testingaccountflow.in" exchange-pattern="request-response" />
+        <logger level="INFO" message="Testing Purpose with #[payload]"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="sfdcuser" value="${sfdc.1.username}" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertaccounttest.in" exchange-pattern="one-way" />
+    </flow>
+
+</mule>

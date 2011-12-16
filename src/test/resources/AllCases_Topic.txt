@@ -1,0 +1,7 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.ApiVersion = 23.0;
+pushTopic.Name = 'AllCases';
+pushTopic.Description = 'All records for the Case object';
+pushtopic.Query = 'SELECT Id, CaseNumber, Tracking_Number__c, LastModifiedDate FROM Case';
+insert pushTopic;
+System.debug('Created new PushTopic: '+ pushTopic.Id);

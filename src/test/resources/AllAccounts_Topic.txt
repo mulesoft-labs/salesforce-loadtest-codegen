@@ -1,0 +1,7 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.ApiVersion = 23.0;
+pushTopic.Name = 'AllAccounts';
+pushTopic.Description = 'All records for the Account object';
+pushtopic.Query = 'SELECT Id, Name, Tracking_Number__c, LastModifiedDate FROM Account';
+insert pushTopic;
+System.debug('Created new PushTopic: '+ pushTopic.Id);

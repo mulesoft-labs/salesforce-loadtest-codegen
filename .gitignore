@@ -1,0 +1,14 @@
+.DS_Store
+*.class
+*~
+*.swp
+*.iml
+*.iws
+*.ipr
+*.log
+target/*
+bin/*
+.classpath
+.project
+.settings/*
+.metadata

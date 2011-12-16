@@ -1,0 +1,7 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.ApiVersion = 23.0;
+pushTopic.Name = 'AllOpportunities';
+pushTopic.Description = 'All records for the Opportunity object';
+pushtopic.Query = 'SELECT Id, Name, Tracking_Number__c, LastModifiedDate FROM Opportunity';
+insert pushTopic;
+System.debug('Created new PushTopic: '+ pushTopic.Id);

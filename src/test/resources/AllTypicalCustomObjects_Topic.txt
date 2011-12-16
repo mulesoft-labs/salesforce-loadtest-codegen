@@ -1,0 +1,7 @@
+PushTopic pushTopic = new PushTopic();
+pushTopic.ApiVersion = 23.0;
+pushTopic.Name = 'AllTypicalCustomObjects';
+pushTopic.Description = 'All records for the Typical Custom object';
+pushtopic.Query = 'SELECT Id, Tracking_Number__c, LastModifiedDate FROM Typical_Custom_Object__c';
+insert pushTopic;
+System.debug('Created new PushTopic: '+ pushTopic.Id);

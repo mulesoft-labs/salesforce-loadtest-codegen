@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:jdbc="http://www.mulesoft.org/schema/mule/ee/jdbc"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" 
+	xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:mule-xml="http://www.mulesoft.org/schema/mule/xml" 
+	xmlns:client="http://www.mulesoft.org/schema/mule/client"
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
+	xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+        http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+        http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+        http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+        http://www.mulesoft.org/schema/mule/client http://www.mulesoft.org/schema/mule/client/current/mule-client.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.mulesoft.org/schema/mule/smtp http://www.mulesoft.org/schema/mule/smtp/current/mule-smtp.xsd">
+
+	<description>
+		SFDC Streaming API load testing
+	</description>
+
+	<context:property-placeholder location="mule.properties" />
+
+	<spring:bean id="jdbcDataSource"
+		class="org.enhydra.jdbc.standard.StandardDataSource" destroy-method="shutdown">
+		<spring:property name="driverName" value="${db.driver}" />
+		<spring:property name="url" value="${db.url}" />
+		<spring:property name="user" value="${db.user}" />
+		<spring:property name="password" value="${db.password}" />
+	</spring:bean>
+
+	<!-- Albin: New secure data store. Make sure to include depends-on. -->
+	<spring:bean id="sysprop"
+		class="org.mule.config.spring.util.SystemPropertyInitializingBean">
+		<spring:property name="systemProperties">
+			<spring:map>
+
+				<spring:entry key="javax.net.ssl.trustStore" value="${app.home}/truststore" />
+				<spring:entry key="javax.net.ssl.trustStorePassword"
+					value="${truststore.password}" />
+			</spring:map>
+		</spring:property>
+	</spring:bean>
+
+	<jdbc:connector name="jdbcConnector" dataSource-ref="jdbcDataSource">
+		<jdbc:query key="insertAuditTrail"
+			value="INSERT INTO testrecords (objecttype, trackingnumber, sfdcid, sfdcmodifieddate, insertdate, listener, receivedtime) 
+			VALUES (#[header:outbound:objecttype], #[header:outbound:trackingnumber], #[header:outbound:sfdcid], #[header:outbound:sfdcmodifieddate], now(), #[header:outbound:sfdcuser], #[header:outbound:receivedtime]);" />
+	</jdbc:connector>
+
+	<flow name="InsertSObjectTestRecord">
+		<vm:inbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="objecttype" value="#[header:inbound:objecttype]" />
+			<add-message-property key="sfdcid" value="#[map-payload:Id]" />
+			<add-message-property key="trackingnumber" value="#[map-payload:Tracking_Number__c]" />
+			<add-message-property key="sfdcmodifieddate" value="#[map-payload:LastModifiedDate]" />
+			<add-message-property key="sfdcuser" value="#[header:inbound:sfdcuser]" />
+			<add-message-property key="receivedtime" value="#[header:inbound:receivedtime]" />
+		</message-properties-transformer>
+		<script:transformer name="amountMappingTransformer">
+			<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy"/>
+		</script:transformer>		
+		<logger message="Pre insert: #[headers:*]" level="DEBUG" />
+		<jdbc:outbound-endpoint queryKey="insertAuditTrail" connector-ref="jdbcConnector" exchange-pattern="one-way" />
+	</flow>
+
+	<spring:beans>
+		<spring:import resource="mule-sfdc-config.xml" />
+	</spring:beans>
+
+</mule>
