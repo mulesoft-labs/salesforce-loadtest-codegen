@@ -11,7 +11,7 @@
 	<description></description>
 
 	<properties>
-		<mule.version>3.2.0</mule.version>
+		<mule.version>3.2.1</mule.version>
 		<!-- Tools properties -->
 		<eclipsePluginVersion>2.5</eclipsePluginVersion>
 		<vmtype>org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType</vmtype>
