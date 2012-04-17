@@ -1,0 +1,2221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:mule-xml="http://www.mulesoft.org/schema/mule/xml" 
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+        http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+        http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+        http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd">
+
+	<description>
+		Tool generated config
+	</description>
+
+
+<!-- Config for User # 1 -->
+	<sfdc:config name="config-user1" username="testuser1@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow1">
+        <sfdc:subscribe-topic config-ref="config-user1" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser1@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow1">
+        <sfdc:subscribe-topic config-ref="config-user1" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser1@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow1">
+        <sfdc:subscribe-topic config-ref="config-user1" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser1@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow1">
+        <sfdc:subscribe-topic config-ref="config-user1" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser1@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 2 -->
+	<sfdc:config name="config-user2" username="testuser2@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow2">
+        <sfdc:subscribe-topic config-ref="config-user2" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser2@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow2">
+        <sfdc:subscribe-topic config-ref="config-user2" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser2@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow2">
+        <sfdc:subscribe-topic config-ref="config-user2" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser2@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow2">
+        <sfdc:subscribe-topic config-ref="config-user2" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser2@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 3 -->
+	<sfdc:config name="config-user3" username="testuser3@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow3">
+        <sfdc:subscribe-topic config-ref="config-user3" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser3@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow3">
+        <sfdc:subscribe-topic config-ref="config-user3" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser3@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow3">
+        <sfdc:subscribe-topic config-ref="config-user3" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser3@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow3">
+        <sfdc:subscribe-topic config-ref="config-user3" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser3@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 4 -->
+	<sfdc:config name="config-user4" username="testuser4@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow4">
+        <sfdc:subscribe-topic config-ref="config-user4" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser4@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow4">
+        <sfdc:subscribe-topic config-ref="config-user4" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser4@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow4">
+        <sfdc:subscribe-topic config-ref="config-user4" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser4@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow4">
+        <sfdc:subscribe-topic config-ref="config-user4" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser4@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 5 -->
+	<sfdc:config name="config-user5" username="testuser5@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow5">
+        <sfdc:subscribe-topic config-ref="config-user5" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser5@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow5">
+        <sfdc:subscribe-topic config-ref="config-user5" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser5@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow5">
+        <sfdc:subscribe-topic config-ref="config-user5" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser5@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow5">
+        <sfdc:subscribe-topic config-ref="config-user5" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser5@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 6 -->
+	<sfdc:config name="config-user6" username="testuser6@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow6">
+        <sfdc:subscribe-topic config-ref="config-user6" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser6@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow6">
+        <sfdc:subscribe-topic config-ref="config-user6" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser6@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow6">
+        <sfdc:subscribe-topic config-ref="config-user6" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser6@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow6">
+        <sfdc:subscribe-topic config-ref="config-user6" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser6@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 7 -->
+	<sfdc:config name="config-user7" username="testuser7@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow7">
+        <sfdc:subscribe-topic config-ref="config-user7" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser7@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow7">
+        <sfdc:subscribe-topic config-ref="config-user7" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser7@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow7">
+        <sfdc:subscribe-topic config-ref="config-user7" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser7@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow7">
+        <sfdc:subscribe-topic config-ref="config-user7" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser7@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 8 -->
+	<sfdc:config name="config-user8" username="testuser8@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow8">
+        <sfdc:subscribe-topic config-ref="config-user8" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser8@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow8">
+        <sfdc:subscribe-topic config-ref="config-user8" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser8@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow8">
+        <sfdc:subscribe-topic config-ref="config-user8" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser8@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow8">
+        <sfdc:subscribe-topic config-ref="config-user8" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser8@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 9 -->
+	<sfdc:config name="config-user9" username="testuser9@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow9">
+        <sfdc:subscribe-topic config-ref="config-user9" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser9@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow9">
+        <sfdc:subscribe-topic config-ref="config-user9" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser9@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow9">
+        <sfdc:subscribe-topic config-ref="config-user9" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser9@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow9">
+        <sfdc:subscribe-topic config-ref="config-user9" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser9@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 10 -->
+	<sfdc:config name="config-user10" username="testuser10@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow10">
+        <sfdc:subscribe-topic config-ref="config-user10" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser10@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow10">
+        <sfdc:subscribe-topic config-ref="config-user10" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser10@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow10">
+        <sfdc:subscribe-topic config-ref="config-user10" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser10@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow10">
+        <sfdc:subscribe-topic config-ref="config-user10" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser10@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 11 -->
+	<sfdc:config name="config-user11" username="testuser11@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow11">
+        <sfdc:subscribe-topic config-ref="config-user11" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser11@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow11">
+        <sfdc:subscribe-topic config-ref="config-user11" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser11@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow11">
+        <sfdc:subscribe-topic config-ref="config-user11" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser11@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow11">
+        <sfdc:subscribe-topic config-ref="config-user11" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser11@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 12 -->
+	<sfdc:config name="config-user12" username="testuser12@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow12">
+        <sfdc:subscribe-topic config-ref="config-user12" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser12@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow12">
+        <sfdc:subscribe-topic config-ref="config-user12" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser12@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow12">
+        <sfdc:subscribe-topic config-ref="config-user12" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser12@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow12">
+        <sfdc:subscribe-topic config-ref="config-user12" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser12@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 13 -->
+	<sfdc:config name="config-user13" username="testuser13@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow13">
+        <sfdc:subscribe-topic config-ref="config-user13" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser13@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow13">
+        <sfdc:subscribe-topic config-ref="config-user13" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser13@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow13">
+        <sfdc:subscribe-topic config-ref="config-user13" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser13@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow13">
+        <sfdc:subscribe-topic config-ref="config-user13" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser13@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 14 -->
+	<sfdc:config name="config-user14" username="testuser14@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow14">
+        <sfdc:subscribe-topic config-ref="config-user14" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser14@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow14">
+        <sfdc:subscribe-topic config-ref="config-user14" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser14@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow14">
+        <sfdc:subscribe-topic config-ref="config-user14" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser14@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow14">
+        <sfdc:subscribe-topic config-ref="config-user14" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser14@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 15 -->
+	<sfdc:config name="config-user15" username="testuser15@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow15">
+        <sfdc:subscribe-topic config-ref="config-user15" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser15@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow15">
+        <sfdc:subscribe-topic config-ref="config-user15" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser15@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow15">
+        <sfdc:subscribe-topic config-ref="config-user15" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser15@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow15">
+        <sfdc:subscribe-topic config-ref="config-user15" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser15@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 16 -->
+	<sfdc:config name="config-user16" username="testuser16@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow16">
+        <sfdc:subscribe-topic config-ref="config-user16" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser16@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow16">
+        <sfdc:subscribe-topic config-ref="config-user16" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser16@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow16">
+        <sfdc:subscribe-topic config-ref="config-user16" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser16@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow16">
+        <sfdc:subscribe-topic config-ref="config-user16" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser16@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 17 -->
+	<sfdc:config name="config-user17" username="testuser17@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow17">
+        <sfdc:subscribe-topic config-ref="config-user17" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser17@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow17">
+        <sfdc:subscribe-topic config-ref="config-user17" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser17@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow17">
+        <sfdc:subscribe-topic config-ref="config-user17" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser17@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow17">
+        <sfdc:subscribe-topic config-ref="config-user17" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser17@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 18 -->
+	<sfdc:config name="config-user18" username="testuser18@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow18">
+        <sfdc:subscribe-topic config-ref="config-user18" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser18@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow18">
+        <sfdc:subscribe-topic config-ref="config-user18" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser18@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow18">
+        <sfdc:subscribe-topic config-ref="config-user18" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser18@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow18">
+        <sfdc:subscribe-topic config-ref="config-user18" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser18@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 19 -->
+	<sfdc:config name="config-user19" username="testuser19@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow19">
+        <sfdc:subscribe-topic config-ref="config-user19" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser19@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow19">
+        <sfdc:subscribe-topic config-ref="config-user19" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser19@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow19">
+        <sfdc:subscribe-topic config-ref="config-user19" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser19@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow19">
+        <sfdc:subscribe-topic config-ref="config-user19" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser19@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 20 -->
+	<sfdc:config name="config-user20" username="testuser20@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow20">
+        <sfdc:subscribe-topic config-ref="config-user20" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser20@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow20">
+        <sfdc:subscribe-topic config-ref="config-user20" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser20@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow20">
+        <sfdc:subscribe-topic config-ref="config-user20" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser20@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow20">
+        <sfdc:subscribe-topic config-ref="config-user20" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser20@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 21 -->
+	<sfdc:config name="config-user21" username="testuser21@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow21">
+        <sfdc:subscribe-topic config-ref="config-user21" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser21@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow21">
+        <sfdc:subscribe-topic config-ref="config-user21" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser21@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow21">
+        <sfdc:subscribe-topic config-ref="config-user21" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser21@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow21">
+        <sfdc:subscribe-topic config-ref="config-user21" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser21@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 22 -->
+	<sfdc:config name="config-user22" username="testuser22@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow22">
+        <sfdc:subscribe-topic config-ref="config-user22" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser22@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow22">
+        <sfdc:subscribe-topic config-ref="config-user22" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser22@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow22">
+        <sfdc:subscribe-topic config-ref="config-user22" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser22@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow22">
+        <sfdc:subscribe-topic config-ref="config-user22" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser22@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 23 -->
+	<sfdc:config name="config-user23" username="testuser23@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow23">
+        <sfdc:subscribe-topic config-ref="config-user23" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser23@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow23">
+        <sfdc:subscribe-topic config-ref="config-user23" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser23@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow23">
+        <sfdc:subscribe-topic config-ref="config-user23" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser23@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow23">
+        <sfdc:subscribe-topic config-ref="config-user23" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser23@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 24 -->
+	<sfdc:config name="config-user24" username="testuser24@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow24">
+        <sfdc:subscribe-topic config-ref="config-user24" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser24@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow24">
+        <sfdc:subscribe-topic config-ref="config-user24" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser24@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow24">
+        <sfdc:subscribe-topic config-ref="config-user24" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser24@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow24">
+        <sfdc:subscribe-topic config-ref="config-user24" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser24@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 25 -->
+	<sfdc:config name="config-user25" username="testuser25@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow25">
+        <sfdc:subscribe-topic config-ref="config-user25" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser25@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow25">
+        <sfdc:subscribe-topic config-ref="config-user25" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser25@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow25">
+        <sfdc:subscribe-topic config-ref="config-user25" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser25@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow25">
+        <sfdc:subscribe-topic config-ref="config-user25" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser25@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 26 -->
+	<sfdc:config name="config-user26" username="testuser26@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow26">
+        <sfdc:subscribe-topic config-ref="config-user26" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser26@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow26">
+        <sfdc:subscribe-topic config-ref="config-user26" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser26@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow26">
+        <sfdc:subscribe-topic config-ref="config-user26" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser26@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow26">
+        <sfdc:subscribe-topic config-ref="config-user26" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser26@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 27 -->
+	<sfdc:config name="config-user27" username="testuser27@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow27">
+        <sfdc:subscribe-topic config-ref="config-user27" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser27@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow27">
+        <sfdc:subscribe-topic config-ref="config-user27" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser27@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow27">
+        <sfdc:subscribe-topic config-ref="config-user27" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser27@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow27">
+        <sfdc:subscribe-topic config-ref="config-user27" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser27@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 28 -->
+	<sfdc:config name="config-user28" username="testuser28@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow28">
+        <sfdc:subscribe-topic config-ref="config-user28" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser28@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow28">
+        <sfdc:subscribe-topic config-ref="config-user28" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser28@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow28">
+        <sfdc:subscribe-topic config-ref="config-user28" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser28@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow28">
+        <sfdc:subscribe-topic config-ref="config-user28" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser28@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 29 -->
+	<sfdc:config name="config-user29" username="testuser29@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow29">
+        <sfdc:subscribe-topic config-ref="config-user29" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser29@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow29">
+        <sfdc:subscribe-topic config-ref="config-user29" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser29@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow29">
+        <sfdc:subscribe-topic config-ref="config-user29" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser29@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow29">
+        <sfdc:subscribe-topic config-ref="config-user29" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser29@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 30 -->
+	<sfdc:config name="config-user30" username="testuser30@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow30">
+        <sfdc:subscribe-topic config-ref="config-user30" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser30@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow30">
+        <sfdc:subscribe-topic config-ref="config-user30" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser30@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow30">
+        <sfdc:subscribe-topic config-ref="config-user30" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser30@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow30">
+        <sfdc:subscribe-topic config-ref="config-user30" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser30@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 31 -->
+	<sfdc:config name="config-user31" username="testuser31@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow31">
+        <sfdc:subscribe-topic config-ref="config-user31" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser31@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow31">
+        <sfdc:subscribe-topic config-ref="config-user31" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser31@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow31">
+        <sfdc:subscribe-topic config-ref="config-user31" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser31@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow31">
+        <sfdc:subscribe-topic config-ref="config-user31" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser31@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 32 -->
+	<sfdc:config name="config-user32" username="testuser32@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow32">
+        <sfdc:subscribe-topic config-ref="config-user32" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser32@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow32">
+        <sfdc:subscribe-topic config-ref="config-user32" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser32@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow32">
+        <sfdc:subscribe-topic config-ref="config-user32" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser32@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow32">
+        <sfdc:subscribe-topic config-ref="config-user32" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser32@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 33 -->
+	<sfdc:config name="config-user33" username="testuser33@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow33">
+        <sfdc:subscribe-topic config-ref="config-user33" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser33@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow33">
+        <sfdc:subscribe-topic config-ref="config-user33" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser33@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow33">
+        <sfdc:subscribe-topic config-ref="config-user33" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser33@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow33">
+        <sfdc:subscribe-topic config-ref="config-user33" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser33@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 34 -->
+	<sfdc:config name="config-user34" username="testuser34@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow34">
+        <sfdc:subscribe-topic config-ref="config-user34" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser34@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow34">
+        <sfdc:subscribe-topic config-ref="config-user34" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser34@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow34">
+        <sfdc:subscribe-topic config-ref="config-user34" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser34@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow34">
+        <sfdc:subscribe-topic config-ref="config-user34" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser34@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 35 -->
+	<sfdc:config name="config-user35" username="testuser35@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow35">
+        <sfdc:subscribe-topic config-ref="config-user35" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser35@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow35">
+        <sfdc:subscribe-topic config-ref="config-user35" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser35@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow35">
+        <sfdc:subscribe-topic config-ref="config-user35" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser35@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow35">
+        <sfdc:subscribe-topic config-ref="config-user35" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser35@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 36 -->
+	<sfdc:config name="config-user36" username="testuser36@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow36">
+        <sfdc:subscribe-topic config-ref="config-user36" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser36@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow36">
+        <sfdc:subscribe-topic config-ref="config-user36" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser36@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow36">
+        <sfdc:subscribe-topic config-ref="config-user36" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser36@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow36">
+        <sfdc:subscribe-topic config-ref="config-user36" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser36@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 37 -->
+	<sfdc:config name="config-user37" username="testuser37@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow37">
+        <sfdc:subscribe-topic config-ref="config-user37" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser37@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow37">
+        <sfdc:subscribe-topic config-ref="config-user37" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser37@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow37">
+        <sfdc:subscribe-topic config-ref="config-user37" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser37@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow37">
+        <sfdc:subscribe-topic config-ref="config-user37" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser37@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 38 -->
+	<sfdc:config name="config-user38" username="testuser38@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow38">
+        <sfdc:subscribe-topic config-ref="config-user38" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser38@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow38">
+        <sfdc:subscribe-topic config-ref="config-user38" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser38@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow38">
+        <sfdc:subscribe-topic config-ref="config-user38" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser38@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow38">
+        <sfdc:subscribe-topic config-ref="config-user38" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser38@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 39 -->
+	<sfdc:config name="config-user39" username="testuser39@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow39">
+        <sfdc:subscribe-topic config-ref="config-user39" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser39@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow39">
+        <sfdc:subscribe-topic config-ref="config-user39" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser39@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow39">
+        <sfdc:subscribe-topic config-ref="config-user39" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser39@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow39">
+        <sfdc:subscribe-topic config-ref="config-user39" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser39@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 40 -->
+	<sfdc:config name="config-user40" username="testuser40@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow40">
+        <sfdc:subscribe-topic config-ref="config-user40" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser40@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow40">
+        <sfdc:subscribe-topic config-ref="config-user40" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser40@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow40">
+        <sfdc:subscribe-topic config-ref="config-user40" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser40@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow40">
+        <sfdc:subscribe-topic config-ref="config-user40" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser40@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 41 -->
+	<sfdc:config name="config-user41" username="testuser41@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow41">
+        <sfdc:subscribe-topic config-ref="config-user41" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser41@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow41">
+        <sfdc:subscribe-topic config-ref="config-user41" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser41@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow41">
+        <sfdc:subscribe-topic config-ref="config-user41" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser41@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow41">
+        <sfdc:subscribe-topic config-ref="config-user41" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser41@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 42 -->
+	<sfdc:config name="config-user42" username="testuser42@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow42">
+        <sfdc:subscribe-topic config-ref="config-user42" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser42@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow42">
+        <sfdc:subscribe-topic config-ref="config-user42" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser42@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow42">
+        <sfdc:subscribe-topic config-ref="config-user42" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser42@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow42">
+        <sfdc:subscribe-topic config-ref="config-user42" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser42@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 43 -->
+	<sfdc:config name="config-user43" username="testuser43@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow43">
+        <sfdc:subscribe-topic config-ref="config-user43" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser43@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow43">
+        <sfdc:subscribe-topic config-ref="config-user43" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser43@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow43">
+        <sfdc:subscribe-topic config-ref="config-user43" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser43@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow43">
+        <sfdc:subscribe-topic config-ref="config-user43" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser43@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 44 -->
+	<sfdc:config name="config-user44" username="testuser44@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow44">
+        <sfdc:subscribe-topic config-ref="config-user44" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser44@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow44">
+        <sfdc:subscribe-topic config-ref="config-user44" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser44@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow44">
+        <sfdc:subscribe-topic config-ref="config-user44" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser44@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow44">
+        <sfdc:subscribe-topic config-ref="config-user44" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser44@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 45 -->
+	<sfdc:config name="config-user45" username="testuser45@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow45">
+        <sfdc:subscribe-topic config-ref="config-user45" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser45@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow45">
+        <sfdc:subscribe-topic config-ref="config-user45" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser45@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow45">
+        <sfdc:subscribe-topic config-ref="config-user45" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser45@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow45">
+        <sfdc:subscribe-topic config-ref="config-user45" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser45@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 46 -->
+	<sfdc:config name="config-user46" username="testuser46@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow46">
+        <sfdc:subscribe-topic config-ref="config-user46" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser46@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow46">
+        <sfdc:subscribe-topic config-ref="config-user46" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser46@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow46">
+        <sfdc:subscribe-topic config-ref="config-user46" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser46@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow46">
+        <sfdc:subscribe-topic config-ref="config-user46" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser46@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 47 -->
+	<sfdc:config name="config-user47" username="testuser47@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow47">
+        <sfdc:subscribe-topic config-ref="config-user47" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser47@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow47">
+        <sfdc:subscribe-topic config-ref="config-user47" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser47@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow47">
+        <sfdc:subscribe-topic config-ref="config-user47" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser47@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow47">
+        <sfdc:subscribe-topic config-ref="config-user47" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser47@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 48 -->
+	<sfdc:config name="config-user48" username="testuser48@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow48">
+        <sfdc:subscribe-topic config-ref="config-user48" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser48@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow48">
+        <sfdc:subscribe-topic config-ref="config-user48" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser48@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow48">
+        <sfdc:subscribe-topic config-ref="config-user48" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser48@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow48">
+        <sfdc:subscribe-topic config-ref="config-user48" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser48@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 49 -->
+	<sfdc:config name="config-user49" username="testuser49@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow49">
+        <sfdc:subscribe-topic config-ref="config-user49" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser49@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow49">
+        <sfdc:subscribe-topic config-ref="config-user49" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser49@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow49">
+        <sfdc:subscribe-topic config-ref="config-user49" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser49@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow49">
+        <sfdc:subscribe-topic config-ref="config-user49" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser49@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+<!-- Config for User # 50 -->
+	<sfdc:config name="config-user50" username="testuser50@mulesoft.test"
+                 password="mule2" securityToken="demo" />
+
+    <flow name="topicAllAccountsFlow50">
+        <sfdc:subscribe-topic config-ref="config-user50" topic="/AllAccounts"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser50@mulesoft.test" />
+			<add-message-property key="objecttype" value="account" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllCasesFlow50">
+        <sfdc:subscribe-topic config-ref="config-user50" topic="/AllCases"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser50@mulesoft.test" />
+			<add-message-property key="objecttype" value="case" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllOpportunitiesFlow50">
+        <sfdc:subscribe-topic config-ref="config-user50" topic="/AllOpportunities"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser50@mulesoft.test" />
+			<add-message-property key="objecttype" value="opportunity" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+    
+    <flow name="topicAllTypicalCustomObjectsFlow50">
+        <sfdc:subscribe-topic config-ref="config-user50" topic="/AllTypicalCustomObjects"/>
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="receivedtime" value="#[function:now]" />
+			<add-message-property key="sfdcuser" value="testuser50@mulesoft.test" />
+			<add-message-property key="objecttype" value="typicalcustomobject" />
+		</message-properties-transformer>
+		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+    </flow>
+
+	
+</mule>

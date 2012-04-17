@@ -7,11 +7,11 @@
 	<artifactId>salesforcetesting</artifactId>
 	<packaging>mule</packaging>
 	<name>Mule SFDC Testing Application</name>
-	<version>1-50</version>
+	<version>1-10</version>
 	<description></description>
 
 	<properties>
-		<mule.version>3.2.1</mule.version>
+		<mule.version>3.2.2</mule.version>
 		<!-- Tools properties -->
 		<eclipsePluginVersion>2.5</eclipsePluginVersion>
 		<vmtype>org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType</vmtype>
@@ -297,7 +297,7 @@
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-sfdc</artifactId>
-			<version>4.0-SNAPSHOT</version>
+			<version>4.0</version>
 		</dependency>
 
 		<!-- for testing -->

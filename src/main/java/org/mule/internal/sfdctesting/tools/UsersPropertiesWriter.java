@@ -38,7 +38,7 @@ public class UsersPropertiesWriter {
 			Connection connect = DriverManager
 					.getConnection("jdbc:mysql://sfdcloadtesting.cbbmvnwhlhi8.us-east-1.rds.amazonaws.com:3306/sfdcloadtesting?user=sfdcloadtest&password=mule2demo");
 			PreparedStatement pstmt = connect
-					.prepareStatement("SELECT username, password FROM sfdcloadtesting.testusers");
+					.prepareStatement("SELECT username, password FROM sfdcloadtesting.testusers order by username limit 20000");
 			System.out.println("Prepared statement...");
 			ResultSet rs = pstmt.executeQuery();
 			System.out.println("Results returned...");
@@ -50,10 +50,9 @@ public class UsersPropertiesWriter {
 
 				String username = rs.getString("username");
 				out.write("sfdc." + i + ".username=" + username + NL);
-				String password = rs.getString("password");
-				out.write("sfdc." + i + ".password=" + password + NL);
-				//String securitytoken = rs.getString("securitytoken");
-				//out.write("sfdc." + i + ".securityToken=" + securitytoken + NL);
+				String passwordraw = rs.getString("password");
+				out.write("sfdc." + i + ".password=" + passwordraw.substring(0,4) + NL);
+				out.write("sfdc." + i + ".securityToken=" + passwordraw.substring(4) + NL);
 
 				out.write(NL);
 			}

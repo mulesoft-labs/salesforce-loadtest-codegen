@@ -38,23 +38,11 @@
 		<spring:property name="password" value="${db.password}" />
 	</spring:bean>
 
-	<!-- Albin: New secure data store. Make sure to include depends-on. -->
-	<spring:bean id="sysprop"
-		class="org.mule.config.spring.util.SystemPropertyInitializingBean">
-		<spring:property name="systemProperties">
-			<spring:map>
-
-				<spring:entry key="javax.net.ssl.trustStore" value="${app.home}/truststore" />
-				<spring:entry key="javax.net.ssl.trustStorePassword"
-					value="${truststore.password}" />
-			</spring:map>
-		</spring:property>
-	</spring:bean>
 
 	<jdbc:connector name="jdbcConnector" dataSource-ref="jdbcDataSource">
 		<jdbc:query key="insertAuditTrail"
-			value="INSERT INTO testrecords (objecttype, trackingnumber, sfdcid, sfdcmodifieddate, insertdate, listener, receivedtime) 
-			VALUES (#[header:outbound:objecttype], #[header:outbound:trackingnumber], #[header:outbound:sfdcid], #[header:outbound:sfdcmodifieddate], now(), #[header:outbound:sfdcuser], #[header:outbound:receivedtime]);" />
+			value="INSERT INTO testrecords (objecttype, trackingnumber, sfdcid, sfdcmodifieddate, insertdate, listener, receivedtime, topic) 
+			VALUES (#[header:outbound:objecttype], #[header:outbound:trackingnumber], #[header:outbound:sfdcid], #[header:outbound:sfdcmodifieddate], now(), #[header:outbound:sfdcuser], #[header:outbound:receivedtime], #[header:outbound:topic]);" />
 	</jdbc:connector>
 
 	<flow name="InsertSObjectTestRecord">
@@ -66,11 +54,11 @@
 			<add-message-property key="sfdcmodifieddate" value="#[map-payload:LastModifiedDate]" />
 			<add-message-property key="sfdcuser" value="#[header:inbound:sfdcuser]" />
 			<add-message-property key="receivedtime" value="#[header:inbound:receivedtime]" />
+			<add-message-property key="topic" value="#[header:inbound:topic]" />
 		</message-properties-transformer>
-		<script:transformer name="amountMappingTransformer">
+		<script:transformer name="dateMappingTransformer">
 			<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy"/>
 		</script:transformer>		
-		<logger message="Pre insert: #[headers:*]" level="DEBUG" />
 		<jdbc:outbound-endpoint queryKey="insertAuditTrail" connector-ref="jdbcConnector" exchange-pattern="one-way" />
 	</flow>
 
