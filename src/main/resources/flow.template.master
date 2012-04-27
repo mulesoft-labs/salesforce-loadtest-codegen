@@ -1,6 +1,7 @@
 	<sfdc:config name="config-user??" username="testuser??@mulesoft.test"
                  password="demo2" securityToken="mule!" />
 
+	<!-- 1 -->
     <flow name="topicAllAccountsFlow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllAccounts"/>
 		<message-properties-transformer scope="outbound">
@@ -12,6 +13,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+ 	<!-- 2 -->
     <flow name="topicAllContactsFlow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllContacts"/>
 		<message-properties-transformer scope="outbound">
@@ -23,6 +25,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+ 	<!-- 3 -->
     <flow name="topicAllCasesFlow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllCases"/>
 		<message-properties-transformer scope="outbound">
@@ -34,6 +37,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 4 -->
     <flow name="topicAllOpportunitiesFlow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllOpportunities"/>
 		<message-properties-transformer scope="outbound">
@@ -45,6 +49,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+ 	<!-- 5 -->
     <flow name="topicAllTypicalCustomObjectsFlow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllTypicalCustomObjects"/>
 		<message-properties-transformer scope="outbound">
@@ -56,6 +61,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
 
+	<!-- 6 -->
     <flow name="topicAllAccounts2Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllAccounts2"/>
 		<message-properties-transformer scope="outbound">
@@ -67,6 +73,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 7 -->
     <flow name="topicAllContacts2Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllContacts2"/>
 		<message-properties-transformer scope="outbound">
@@ -78,6 +85,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 8 -->
     <flow name="topicAllCases2Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllCases2"/>
 		<message-properties-transformer scope="outbound">
@@ -89,6 +97,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 9 -->
     <flow name="topicAllOpportunities2Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllOpportunities2"/>
 		<message-properties-transformer scope="outbound">
@@ -100,6 +109,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 10 -->
     <flow name="topicAllTypicalCustomObjects2Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllTypicalCustomObjects2"/>
 		<message-properties-transformer scope="outbound">
@@ -111,6 +121,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow> 
     
+	<!-- 11 -->
     <flow name="topicAllAccounts4Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllAccounts4"/>
 		<message-properties-transformer scope="outbound">
@@ -122,6 +133,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 12 -->
     <flow name="topicAllContacts4Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllContacts4"/>
 		<message-properties-transformer scope="outbound">
@@ -133,6 +145,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 13 -->
     <flow name="topicAllCases4Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllCases4"/>
 		<message-properties-transformer scope="outbound">
@@ -144,6 +157,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 14 -->
     <flow name="topicAllOpportunities4Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllOpportunities4"/>
 		<message-properties-transformer scope="outbound">
@@ -155,6 +169,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 15 -->
     <flow name="topicAllTypicalCustomObjects4Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllTypicalCustomObjects4"/>
 		<message-properties-transformer scope="outbound">
@@ -166,6 +181,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 16 -->
     <flow name="topicAllAccounts6Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllAccounts6"/>
 		<message-properties-transformer scope="outbound">
@@ -177,6 +193,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 17 -->
     <flow name="topicAllContacts6Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllContacts6"/>
 		<message-properties-transformer scope="outbound">
@@ -188,6 +205,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 18 -->
     <flow name="topicAllCases6Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllCases6"/>
 		<message-properties-transformer scope="outbound">
@@ -199,6 +217,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 19 -->
     <flow name="topicAllOpportunities6Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllOpportunities6"/>
 		<message-properties-transformer scope="outbound">
@@ -210,6 +229,7 @@
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
     
+	<!-- 20 -->
     <flow name="topicAllTypicalCustomObjects6Flow??">
         <sfdc:subscribe-topic config-ref="config-user??" topic="/AllTypicalCustomObjects6"/>
 		<message-properties-transformer scope="outbound">

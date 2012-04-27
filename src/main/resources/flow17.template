@@ -1,15 +1,14 @@
 	<sfdc:config name="config-user??" username="testuser??@mulesoft.test"
                  password="demo2" securityToken="mule!" />
-
-	<!-- 1 -->
-    <flow name="topicAllAccountsFlow??">
-        <sfdc:subscribe-topic config-ref="config-user??" topic="/AllAccounts"/>
+  
+	<!-- 17 -->
+    <flow name="topicAllContacts6Flow??">
+        <sfdc:subscribe-topic config-ref="config-user??" topic="/AllContacts6"/>
 		<message-properties-transformer scope="outbound">
 			<add-message-property key="receivedtime" value="#[function:now]" />
 			<add-message-property key="sfdcuser" value="testuser??@mulesoft.test" />
-			<add-message-property key="objecttype" value="account" />
-			<add-message-property key="topic" value="allaccounts" />
+			<add-message-property key="objecttype" value="contact" />
+			<add-message-property key="topic" value="allcontacts6" />
 		</message-properties-transformer>
 		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
     </flow>
-    
