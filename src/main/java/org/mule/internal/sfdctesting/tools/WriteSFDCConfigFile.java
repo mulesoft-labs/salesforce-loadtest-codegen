@@ -28,7 +28,7 @@ public class WriteSFDCConfigFile {
 		int s = Integer.parseInt(args[0]);
 		int e = Integer.parseInt(args[1]);
 		
-		String template = args[3];
+		String template = args[2];
 		
 		String filename;
 		if (args.length < 4) {
