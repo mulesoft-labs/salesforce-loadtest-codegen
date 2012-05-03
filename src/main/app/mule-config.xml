@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:spring="http://www.springframework.org/schema/beans" 
-	xmlns:jdbc="http://www.mulesoft.org/schema/mule/ee/jdbc"
-	xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
-	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" 
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:jdbc="http://www.mulesoft.org/schema/mule/ee/jdbc"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
 	xmlns:script="http://www.mulesoft.org/schema/mule/scripting"
-	xmlns:mule-xml="http://www.mulesoft.org/schema/mule/xml" 
-	xmlns:client="http://www.mulesoft.org/schema/mule/client"
-	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mule-xml="http://www.mulesoft.org/schema/mule/xml" xmlns:client="http://www.mulesoft.org/schema/mule/client"
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
 	xsi:schemaLocation="
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
@@ -36,8 +31,6 @@
 		<spring:property name="url" value="${db.url}" />
 		<spring:property name="user" value="${db.user}" />
 		<spring:property name="password" value="${db.password}" />
-		<spring:property name="minCon" value="${db.mincon}" />
-		<spring:property name="maxCon" value="${db.maxcon}" />
 	</spring:bean>
 
 	<jdbc:connector name="jdbcConnector" dataSource-ref="jdbcDataSource">
@@ -47,12 +40,38 @@
 	</jdbc:connector>
 
 	<script:transformer name="dateMappingTransformer">
-		<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy"/>
+		<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy" />
 	</script:transformer>
+	
+	<configuration>
+		<default-threading-profile maxThreadsActive="50000" poolExhaustedAction="WAIT" threadWaitTimeout="-1"/>
+	</configuration>
+
+	<flow name="InsertSObjectTestRecord">
+		<vm:inbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+		<message-properties-transformer scope="outbound">
+			<add-message-property key="objecttype"
+				value="#[header:inbound:objecttype]" />
+			<add-message-property key="sfdcid" value="#[map-payload:Id]" />
+			<add-message-property key="trackingnumber"
+				value="#[map-payload:Tracking_Number__c]" />
+			<add-message-property key="sfdcmodifieddate"
+				value="#[map-payload:LastModifiedDate]" />
+			<add-message-property key="sfdcuser"
+				value="#[header:inbound:sfdcuser]" />
+			<add-message-property key="receivedtime"
+				value="#[header:inbound:receivedtime]" />
+			<add-message-property key="topic"
+				value="#[header:inbound:topic]" />
+		</message-properties-transformer>
+		<transformer ref="dateMappingTransformer"/>
+		<jdbc:outbound-endpoint queryKey="insertAuditTrail"
+			connector-ref="jdbcConnector" exchange-pattern="one-way" />
+	</flow>
 
 	<spring:beans>
 		<spring:import resource="mule-sfdc-config1.xml" />
-		<spring:import resource="mule-sfdc-config2.xml" />
+		<!-- <spring:import resource="mule-sfdc-config2.xml" /> -->
 	</spring:beans>
 
 </mule>
