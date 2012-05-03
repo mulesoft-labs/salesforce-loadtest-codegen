@@ -9,6 +9,10 @@
 			<add-message-property key="sfdcuser" value="testuser??@mulesoft.test" />
 			<add-message-property key="objecttype" value="opportunity" />
 			<add-message-property key="topic" value="allopportunities6" />
+			<add-message-property key="sfdcid" value="#[map-payload:Id]" />
+			<add-message-property key="trackingnumber" value="#[map-payload:Tracking_Number__c]" />
+			<add-message-property key="sfdcmodifieddate" value="#[map-payload:LastModifiedDate]" />
 		</message-properties-transformer>
-		<vm:outbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
+		<transformer ref="dateMappingTransformer" />
+		<jdbc:outbound-endpoint queryKey="insertAuditTrail" connector-ref="jdbcConnector" exchange-pattern="one-way" />
     </flow>

@@ -34,7 +34,7 @@ public class WriteSFDCConfigFile {
 		if (args.length < 4) {
 			filename = "src/main/app/mule-sfdc-config.xml";
 		} else {
-			filename = args[3];
+			filename = "src/main/app/" + args[3] + ".xml";
 		}
 		
 		Scanner scanner = new Scanner(new FileInputStream(TEMPLATE));

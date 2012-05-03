@@ -31,13 +31,14 @@
 	<context:property-placeholder location="mule.properties" />
 
 	<spring:bean id="jdbcDataSource"
-		class="org.enhydra.jdbc.standard.StandardDataSource" destroy-method="shutdown">
+		class="org.enhydra.jdbc.standard.StandardXADataSource" destroy-method="shutdown">
 		<spring:property name="driverName" value="${db.driver}" />
 		<spring:property name="url" value="${db.url}" />
 		<spring:property name="user" value="${db.user}" />
 		<spring:property name="password" value="${db.password}" />
+		<spring:property name="minCon" value="${db.mincon}" />
+		<spring:property name="maxCon" value="${db.maxcon}" />
 	</spring:bean>
-
 
 	<jdbc:connector name="jdbcConnector" dataSource-ref="jdbcDataSource">
 		<jdbc:query key="insertAuditTrail"
@@ -45,25 +46,13 @@
 			VALUES (#[header:outbound:objecttype], #[header:outbound:trackingnumber], #[header:outbound:sfdcid], #[header:outbound:sfdcmodifieddate], now(), #[header:outbound:sfdcuser], #[header:outbound:receivedtime], #[header:outbound:topic]);" />
 	</jdbc:connector>
 
-	<flow name="InsertSObjectTestRecord">
-		<vm:inbound-endpoint path="insertsobjecttestrecord.in" exchange-pattern="one-way" />
-		<message-properties-transformer scope="outbound">
-			<add-message-property key="objecttype" value="#[header:inbound:objecttype]" />
-			<add-message-property key="sfdcid" value="#[map-payload:Id]" />
-			<add-message-property key="trackingnumber" value="#[map-payload:Tracking_Number__c]" />
-			<add-message-property key="sfdcmodifieddate" value="#[map-payload:LastModifiedDate]" />
-			<add-message-property key="sfdcuser" value="#[header:inbound:sfdcuser]" />
-			<add-message-property key="receivedtime" value="#[header:inbound:receivedtime]" />
-			<add-message-property key="topic" value="#[header:inbound:topic]" />
-		</message-properties-transformer>
-		<script:transformer name="dateMappingTransformer">
-			<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy"/>
-		</script:transformer>		
-		<jdbc:outbound-endpoint queryKey="insertAuditTrail" connector-ref="jdbcConnector" exchange-pattern="one-way" />
-	</flow>
+	<script:transformer name="dateMappingTransformer">
+		<script:script engine="groovy" file="sfdcModifiedDateFormat.groovy"/>
+	</script:transformer>
 
 	<spring:beans>
-		<spring:import resource="mule-sfdc-config.xml" />
+		<spring:import resource="mule-sfdc-config1.xml" />
+		<spring:import resource="mule-sfdc-config2.xml" />
 	</spring:beans>
 
 </mule>

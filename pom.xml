@@ -7,7 +7,7 @@
 	<artifactId>salesforcetesting</artifactId>
 	<packaging>mule</packaging>
 	<name>Mule SFDC Testing Application</name>
-	<version>1-200</version>
+	<version>1to2000</version>
 	<description></description>
 
 	<properties>
