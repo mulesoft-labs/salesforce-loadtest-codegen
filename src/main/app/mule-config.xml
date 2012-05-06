@@ -44,7 +44,7 @@
 	</script:transformer>
 	
 	<configuration>
-		<default-threading-profile maxThreadsActive="50000" poolExhaustedAction="WAIT" threadWaitTimeout="-1"/>
+		<default-threading-profile maxThreadsActive="5000" poolExhaustedAction="WAIT" threadWaitTimeout="-1"/>
 	</configuration>
 
 	<flow name="InsertSObjectTestRecord">
@@ -70,7 +70,7 @@
 	</flow>
 
 	<spring:beans>
-		<spring:import resource="mule-sfdc-config16.xml" />
+		<spring:import resource="mule-sfdc-config5.xml" />
 	</spring:beans>
 
 </mule>
