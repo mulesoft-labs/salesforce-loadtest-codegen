@@ -70,8 +70,7 @@
 	</flow>
 
 	<spring:beans>
-		<spring:import resource="mule-sfdc-config19.xml" />
-		<spring:import resource="mule-sfdc-config20.xml" />
+		<spring:import resource="mule-sfdc-config16.xml" />
 	</spring:beans>
 
 </mule>
